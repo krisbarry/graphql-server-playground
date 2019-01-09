@@ -1,0 +1,21 @@
+query GetLIRRSchedulesByDate {
+  schedulesByDate(agency: "LIRR", destination:"BSR", origin:"ATL", date: "022820191200") {
+    alerts
+    duration
+    peak
+    numLegs
+    legs {
+      branch
+      arrival
+      departure
+      status
+      trackNumber
+      trainNumber
+      numStops
+      stops {
+        station
+        departure
+      }
+    }
+  }
+}
