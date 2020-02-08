@@ -3,14 +3,14 @@ import {
   Query,
   Root,
   Resolver,
-  FieldResolver
+  Mutation,
+  Subscription
+  // FieldResolver
 } from "type-graphql"
 import { Schedule } from "./schemas/schedule"
 import { ScheduleService } from "./services/schedule"
-// import { ScheduleService } from "./services/mock/schedule"
 import { ScheduleSearch } from "./schemas/schedule-search"
 
-// @Service()
 @Resolver(of => Schedule)
 export class ScheduleResolver {
 
@@ -24,8 +24,24 @@ export class ScheduleResolver {
     return await this.scheduleService.searchSchedules(args)
   }
 
-  @FieldResolver()
+  /*@FieldResolver()
   numLegs(@Root() schedule: Schedule): number {
     return schedule.legs.length;
-  }
+  }*
+
+  @Subscription({ 
+    topics: "NOTIFICATIONS",
+    // filter: ({ payload, args }) => args.priorities.includes(payload.priority),
+  })
+  pointsScored(
+    @Root() pointsPayload: any // PointsPayload
+    // @Args() args: PointsArgs,
+  ): any {
+    console.log('points scored!')
+    return {
+      ...pointsPayload,
+      date: new Date(),
+    }
+  }*/
+
 }

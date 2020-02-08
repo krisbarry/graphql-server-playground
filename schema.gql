@@ -55,7 +55,6 @@ type Schedule {
   # Indicates whether scheduled trip is during peak (i.e. 'Y' or 'N')
   peak: String!
   legs: [Leg!]!
-  numLegs: Float!
 }
 
 # Object representing a rail schedule leg stop
